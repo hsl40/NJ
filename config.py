@@ -4,10 +4,13 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+    SECRET_KEY = 'Nj056435'
+    #警告
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
-    MAIL_SERVER = 'smtp.njtzzx.cn'
+    MAIL_SERVER = 'smtp.mxhichina.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = False
     MAIL_USERNAME = 'hsl@njtzzx.cn'
@@ -19,8 +22,6 @@ class Config:
     FLASKY_FOLLOWERS_PER_PAGE = 50
     FLASKY_COMMENTS_PER_PAGE = 30
     FLASKY_SLOW_DB_QUERY_TIME=0.5
-    #警告
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     @staticmethod
     def init_app(app):

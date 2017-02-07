@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm
+from flask_wtf import Form
 from wtforms import StringField, TextAreaField, BooleanField, SelectField,\
     SubmitField
 from wtforms.validators import Required, Length, Email, Regexp
@@ -7,19 +7,19 @@ from flask_pagedown.fields import PageDownField
 from ..models import Role, User
 
 
-class NameForm(FlaskForm):
+class NameForm(Form):
     name = StringField('你的姓名?', validators=[Required()])
     submit = SubmitField('提交')
 
 
-class EditProfileForm(FlaskForm):
+class EditProfileForm(Form):
     name = StringField('真实姓名', validators=[Length(0, 64)])
     location = StringField('位置', validators=[Length(0, 64)])
     about_me = TextAreaField('关于我')
     submit = SubmitField('提交')
 
 
-class EditProfileAdminForm(FlaskForm):
+class EditProfileAdminForm(Form):
     email = StringField('邮箱', validators=[Required(), Length(1, 64),
                                              Email()])
     username = StringField('用户名', validators=[
@@ -50,11 +50,11 @@ class EditProfileAdminForm(FlaskForm):
             raise ValidationError('用户名已被占用')
 
 
-class PostForm(FlaskForm):
+class PostForm(Form):
     body = PageDownField("发表下你的想法?", validators=[Required()])
     submit = SubmitField('提交')
 
 
-class CommentForm(FlaskForm):
+class CommentForm(Form):
     body = StringField('输入你的回复', validators=[Required()])
     submit = SubmitField('提交')
